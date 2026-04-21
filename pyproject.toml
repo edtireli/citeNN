@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "citenn"
+version = "0.1.0"
+description = "Retriever-based citation recommender. Suggests real DOIs and BibTeX entries for passages of text, trained on real citation contexts mined from arXiv, bioRxiv and PubMed."
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.2",
+    "transformers>=4.44",
+    "tqdm>=4.66",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+faiss = ["faiss-cpu>=1.8"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+citenn = "citenn.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["citenn*"]
